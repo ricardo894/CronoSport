@@ -1,0 +1,122 @@
+
+:root{font-family:Inter,system-ui,Arial,sans-serif;color:#182230;background:#f5f6f8;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:13px 16px;font-weight:800}
+header{height:66px;background:#fff;border-bottom:1px solid #e6e8ec;display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,calc((100% - 960px)/2))}
+.brand{font-weight:900;font-size:21px}.brand b{color:#f47721}.badge{font-size:12px;border-radius:20px;padding:7px 10px;background:#fff0e5;color:#a94c08}
+main{max-width:960px;margin:auto;padding:22px 16px}.hero{padding:14px 2px 22px}.eyebrow{font-size:11px;letter-spacing:2px;color:#ed741e;font-weight:900}.hero h1{font-size:clamp(34px,7vw,52px);letter-spacing:-2px;line-height:1.02;margin:7px 0}.hero h1 span{color:#f47721}.muted{color:#687486}.panel{background:white;border:1px solid #e6e8ec;border-radius:18px;padding:19px;margin-bottom:16px;box-shadow:0 5px 22px #15223808}.head{display:flex;justify-content:space-between;align-items:center;gap:10px}.head h2{margin:0 0 14px;font-size:18px}label{font-size:13px;font-weight:700;color:#475467;display:block}input,select{display:block;width:100%;padding:12px;border:1px solid #d7dce3;border-radius:10px;margin-top:6px;background:white;color:#182230}
+.fields{display:grid;grid-template-columns:2fr 1fr;gap:12px}.add{display:grid;grid-template-columns:110px 1fr auto;gap:9px;margin:15px 0}.orange{background:#f47721;color:white}.secondary{background:#fff0e5;color:#a94c08}.danger{background:#fff0ed;color:#b42318}.primary{width:100%;font-size:17px;min-height:58px}.actions{display:flex;gap:10px;margin-top:16px}.actions>*{flex:1}.athlete{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:10px;border:1px solid #e6e8ec;border-radius:13px;padding:11px;margin-top:8px}.number{font-size:28px;font-weight:950;color:#f47721;text-align:center}.athlete small{display:block;color:#687486}.athlete button{min-width:108px;background:#f47721;color:white}.athlete button:disabled{background:#e7f7ed;color:#167341;opacity:1}.rankrow{display:grid;grid-template-columns:42px 1fr auto;gap:10px;padding:12px 2px;border-bottom:1px solid #edf0f2;align-items:center}.rank{font-size:21px;font-weight:900;color:#f47721}.time{font-weight:900;font-variant-numeric:tabular-nums}.notice{font-size:13px;line-height:1.5;color:#667085}.tabs{display:flex;gap:8px;margin:10px 0 16px}.tabs button{background:#eceff3;color:#344054}.tabs button.active{background:#f47721;color:white}.hidden{display:none!important}footer{text-align:center;color:#8993a1;font-size:12px;padding:20px}
+@media(max-width:600px){.fields{grid-template-columns:1fr}.add{grid-template-columns:85px 1fr}.add button{grid-column:1/-1}.actions{flex-direction:column}.panel{padding:15px}.athlete{grid-template-columns:48px 1fr auto;gap:6px;padding:9px}.athlete button{min-width:84px;padding:11px 8px}}
+
+.sport-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.sport-tabs button{background:#e9edf2;color:#344054;font-size:16px;padding:16px}.sport-tabs button.active{background:#f47721;color:#fff}.athlete .time{font-size:17px;margin-top:3px}
+
+/* Relógio da prova e atualização ao vivo */
+.race-clock{margin:16px 0;padding:20px 16px;border-radius:16px;background:#182230;color:#fff;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.race-clock-caption{font-size:11px;letter-spacing:2px;font-weight:800;color:#cbd5e1}
+.race-clock strong{font-size:clamp(40px,10vw,58px);line-height:1.1;font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:-1.5px}
+#raceStatus{font-size:12px;font-weight:700;color:#d7e5f5}
+.live-time{font-variant-numeric:tabular-nums}
+
+/* Organização visual dos resultados e feedback de cadastro */
+.results-summary{display:flex;flex-direction:column;gap:4px;padding:13px 14px;margin:2px 0 8px;background:#f7f8fa;border:1px solid #e8ebef;border-radius:12px;color:#263445}
+.results-summary strong{font-size:14px}
+.results-summary span{font-size:12px;color:#667085}
+.rankrow{min-height:66px}
+.rankrow.winner{background:#fff9ed;border:1px solid #f5dfb4;border-radius:12px;padding:12px;margin:6px 0}
+.rank-person{display:flex;flex-direction:column;gap:4px;min-width:0}
+.rank-person b{overflow-wrap:anywhere}
+.rank-person small{font-size:12px;color:#667085}
+.empty-results{padding:14px 2px;line-height:1.5}
+#close{font-weight:850}
+@media(max-width:600px){
+ .rankrow{grid-template-columns:40px minmax(0,1fr) auto;gap:8px}
+ .rankrow .time{font-size:14px}
+}
+
+/* Histórico e reinício seguro */
+.history-intro{font-size:13px;line-height:1.5;margin-top:-5px}
+.history-card{border:1px solid #e6e8ec;border-radius:14px;padding:14px;margin-top:10px;background:#fff}
+.history-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.history-top>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.history-top b{overflow-wrap:anywhere}
+.history-top small{font-size:12px;color:#687486}
+.history-pill{background:#e7f8ed;color:#18733b;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:800;white-space:nowrap}
+.history-meta{display:flex;flex-wrap:wrap;gap:8px 15px;margin:12px 0;color:#667085;font-size:12px}
+.history-winner{background:#fff9ed;border-radius:10px;padding:10px;font-size:13px;line-height:1.5}
+.history-toggle{width:100%;margin-top:10px}
+.history-detail{padding-top:8px}
+.history-rank{display:grid;grid-template-columns:75px 1fr auto;gap:8px;padding:10px 2px;border-bottom:1px solid #edf0f2;align-items:center;font-size:13px}
+.history-rank>b{color:#f47721}
+.history-rank>strong{font-variant-numeric:tabular-nums}
+.history-pending{font-size:12px;color:#667085;line-height:1.5;margin:10px 0 0}
+#restart:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:600px){.history-top{flex-direction:column}.history-rank{grid-template-columns:65px minmax(0,1fr) auto;font-size:12px}}
+
+
+/* Organização geral: hierarquia, respiro e leitura rápida */
+:root{scroll-behavior:smooth}
+body{background:#f3f5f8;color:#182230}
+header{position:sticky;top:0;z-index:20;box-shadow:0 3px 14px #1522380a;backdrop-filter:blur(12px)}
+main{max-width:900px;padding:24px 18px 34px}
+.hero{padding:20px 4px 24px}
+.hero .muted{max-width:560px;line-height:1.55}
+.tabs{position:sticky;top:66px;z-index:15;padding:8px;background:#f3f5f8eF;border:1px solid #e6e8ec;border-radius:14px}
+.tabs button{flex:1;min-height:44px}
+.sport-tabs{gap:12px;margin:0 0 16px}
+.sport-tabs button{border:1px solid #e1e6ed;border-radius:14px;transition:transform .15s,box-shadow .15s}
+.sport-tabs button.active{box-shadow:0 5px 14px #f4772130}
+.panel{padding:22px;margin-bottom:18px;border-radius:20px;box-shadow:0 8px 26px #1522380a}
+.panel h2{letter-spacing:-.35px}
+.head{align-items:flex-start}
+.head h2{margin:3px 0 13px}
+.section-kicker{display:block;font-size:10px;letter-spacing:1.6px;font-weight:900;color:#e66b17;margin-bottom:4px}
+.competition-panel .race-clock{margin:17px 0 21px;padding:24px 18px;border-radius:18px;background:linear-gradient(145deg,#172333,#26384d);box-shadow:inset 0 1px #ffffff12,0 8px 20px #18223018}
+.race-clock strong{letter-spacing:-2px}
+.setup-block{padding:0 0 19px;border-bottom:1px solid #edf0f3}
+.participant-block,.control-block{padding-top:18px}
+.subsection-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:10px}
+.subsection-heading strong{font-size:14px;color:#263445}
+.helper-text{font-size:11px;text-align:right}
+.add{margin:10px 0 13px;grid-template-columns:100px minmax(0,1fr) auto}
+.add input{min-width:0;margin:0;min-height:46px}
+.add button{min-height:46px;padding:11px 16px;white-space:nowrap}
+.athlete{background:#fbfcfd;border-color:#e9edf2;transition:border-color .15s,background .15s}
+.athlete:hover{border-color:#f4b17f;background:#fffdfa}
+.control-block{border-top:1px solid #edf0f3;margin-top:17px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.actions button{min-height:50px}
+.actions #start{grid-column:1/-1}
+.actions #close{width:100%}
+.actions #restart{width:100%}
+.actions #restart:not(.hidden){display:block}
+.results-panel .head,.history-panel .head,.sync-panel .head{align-items:center}
+.results-summary{margin:4px 0 12px;padding:14px 16px}
+.rankrow{padding:13px 10px;border-radius:10px}
+.rankrow:not(.winner):nth-child(even){background:#fafbfc}
+.rankrow.winner{box-shadow:0 3px 12px #e6a33a12}
+#saveResults{min-height:46px}
+.history-card{padding:16px;border-radius:15px;background:#fbfcfd}
+.history-card+.history-card{margin-top:12px}
+.history-toggle{min-height:44px}
+.sync-panel .notice{max-width:680px}
+.sync-panel button{margin:4px 6px 0 0;min-height:42px}
+button,input,select{transition:border-color .15s,box-shadow .15s,transform .15s}
+input:focus,select:focus{outline:none;border-color:#f47721;box-shadow:0 0 0 3px #f477211c}
+button:focus-visible{outline:3px solid #f4772160;outline-offset:2px}
+button:active{transform:translateY(1px)}
+@media(max-width:600px){
+ main{padding:15px 12px 26px}
+ .hero{padding:15px 3px 18px}
+ .hero h1{letter-spacing:-1.5px}
+ .tabs{top:66px;margin-top:4px}
+ .panel{padding:16px;margin-bottom:13px;border-radius:17px}
+ .competition-panel .race-clock{margin:14px 0 18px;padding:21px 12px}
+ .subsection-heading{align-items:flex-start;flex-direction:column;gap:3px}
+ .helper-text{text-align:left}
+ .add{grid-template-columns:82px minmax(0,1fr);gap:8px}
+ .add button{grid-column:1/-1;width:100%}
+ .actions{grid-template-columns:1fr 1fr;gap:8px}
+ .actions button{font-size:14px;padding:12px 9px}
+ .athlete{grid-template-columns:42px minmax(0,1fr) auto}
+ .athlete button{min-width:76px;font-size:12px}
+ .history-meta{gap:7px 11px}
+}

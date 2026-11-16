@@ -1,0 +1,8 @@
+{
+  "appId": "br.com.cronosport.app",
+  "appName": "CronoSport",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}

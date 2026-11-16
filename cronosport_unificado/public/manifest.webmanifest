@@ -1,0 +1,10 @@
+{
+  "name": "CronoSport",
+  "short_name": "CronoSport",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#f47721",
+  "lang": "pt-BR",
+  "icons": []
+}
