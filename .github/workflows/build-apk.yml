@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
       - name: Instalar dependencias
         run: npm ci
       - name: Compilar aplicativo web
@@ -35,3 +35,4 @@ jobs:
           name: CronoSport-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+
